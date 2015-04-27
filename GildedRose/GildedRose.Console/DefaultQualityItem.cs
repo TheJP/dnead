@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GildedRose.Console
 {
-    class DefaultQualityItem : QualityItem
+    public class DefaultQualityItem : QualityItemBase
     {
         public DefaultQualityItem(Item item) : base(item)
         {

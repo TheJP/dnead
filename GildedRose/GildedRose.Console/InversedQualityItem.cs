@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GildedRose.Console
 {
-    class InversedQualityItem : QualityItem
+    public class InversedQualityItem : QualityItemBase
     {
         public InversedQualityItem(Item item) : base(item)
         {
@@ -19,7 +19,7 @@ namespace GildedRose.Console
         public override void UpdateSellIn()
         {
             SellIn -= 1;
-            if (SellIn <= 0)
+            if (SellIn < 0)
             {
                 Quality += 1;
             }

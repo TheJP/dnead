@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GildedRose.Console
 {
-    class TicketItem : InversedQualityItem
+    public class TicketItem : InversedQualityItem
     {
         public const int STEP_ONE = 11;
         public const int STEP_TWO = 6;

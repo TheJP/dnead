@@ -116,8 +116,9 @@ namespace GildedRose.MSTests
 		}
 
 		[TestMethod]
-		public void should_Increase_Quality_by_2_of_JackFruit()
+		public void should_Decrease_Quality_by_2_of_JackFruit()
 		{
+            //Test of a inverse, conjured item
 			// Arrange
 			Item item = new Item("JackFruit", 1, 0);
 
@@ -225,56 +226,26 @@ namespace GildedRose.MSTests
 			Assert.AreEqual(50, backStagePass5DaysAway.Quality);
 		}
 
+        [TestMethod]
+        public void should_decrease_Conjured_quality_twice_as_fast()
+        {
+            var item = new Item("Conjured Mana Cake", 1, quality: 4);
+            new Inventory(item).UpdateQuality();
+            Assert.AreEqual(2, item.Quality);
+
+            RunUpdateQuality_AndAssertOnQuality(new Item("Conjured", 1, 1), 0);
+            RunUpdateQuality_AndAssertOnQuality(new Item("Conjured", 1, 2), 0);
+            RunUpdateQuality_AndAssertOnQuality(new Item("Conjured", 1, 3), 1/*3-2=1*/);
 
 
+        }
 
+        private static void RunUpdateQuality_AndAssertOnQuality(Item item, int expectedQuality)
+        {
+            new Inventory(item).UpdateQuality();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//[TestMethod]
-		//public void should_decrease_Conjured_quality_twice_as_fast()
-		//{
-		//	var item = new Item("Conjured Mana Cake", 1, quality: 4);
-		//	new Inventory(item).UpdateQuality();
-		//	Assert.AreEqual(2, item.Quality);
-
-		//	//RunUpdateQuality_AndAssertOnQuality(new Item(C.Conjured, 1, 1), 0);
-		//	//RunUpdateQuality_AndAssertOnQuality(new Item(C.Conjured, 1, 2), 0);
-		//	//RunUpdateQuality_AndAssertOnQuality(new Item(C.Conjured, 1, 3), 0);
-
-
-		//}
-
-		//private static void RunUpdateQuality_AndAssertOnQuality(Item item, int expectedQuality)
-		//{
-		//	new Inventory(item).UpdateQuality();
-
-		//	Assert.AreEqual(expectedQuality, item.Quality);
-		//}
+            Assert.AreEqual(expectedQuality, item.Quality);
+        }
 
 
 

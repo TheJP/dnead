@@ -5,9 +5,9 @@ using System.Text;
 
 namespace GildedRose.Console
 {
-    class QualityItemFactory
+    internal class QualityItemFactory
     {
-        public QualityItem CreateQualityItem(Item item)
+        public IQualityItem CreateQualityItem(Item item)
         {
             switch (item.Name)
             {
@@ -17,6 +17,11 @@ namespace GildedRose.Console
                     return new TicketItem(item);
                 case "Sulfuras, Hand of Ragnaros":
                     return new NonDecayingItem(item);
+                case "Conjured Mana Cake":
+                case "Conjured":
+                    return new ConjuredItem(new DefaultQualityItem(item));
+                case "JackFruit":
+                    return new ConjuredItem(new InversedQualityItem(item));
                 default:
                     return new DefaultQualityItem(item);
             }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GildedRose.Console
 {
-    class NonDecayingItem : QualityItem
+    public class NonDecayingItem : QualityItemBase
     {
         public NonDecayingItem(Item item) : base(item)
         {

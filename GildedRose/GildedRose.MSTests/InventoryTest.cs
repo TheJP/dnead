@@ -85,7 +85,6 @@ namespace GildedRose.MSTests
 
 			sut.UpdateQuality();
 
-
 			Assert.AreEqual(23, normalItem.Quality);
 		}
 
@@ -112,7 +111,6 @@ namespace GildedRose.MSTests
 			Inventory sut = new Inventory(agedBrie);
 
 			sut.UpdateQuality();
-
 
 			Assert.AreEqual(2, agedBrie.Quality);
 		}
